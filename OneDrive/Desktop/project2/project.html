@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="script" href="project.js">
+</head>
+<body style="background-image: url('https://wallpapercave.com/wp/wp8122012.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="choices">
+            <button onclick="playGame('ROCK')">Rock</button>
+            <button onclick="playGame('PAPER')">Paper</button>
+            <button onclick="playGame('SCISSOR')">Scissors</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+</body>
+<script>
+    function playGame(userChoice) {
+    const choices = ['ROCK', 'PAPER', 'SCISSOR'];
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = '';
+
+    if (userChoice === computerChoice) {
+        result = "It's a draw!";
+    } else if (
+        (userChoice === 'ROCK' && computerChoice === 'SCISSOR') ||
+        (userChoice === 'PAPER' && computerChoice === 'ROCK') ||
+        (userChoice === 'SCISSOR' && computerChoice === 'PAPER')
+    ) {
+        result = 'You win!';
+    } else {
+        result = 'You lose!';
+    }
+
+    document.getElementById('result').innerText = `You : ${userChoice} & Computer :  ${computerChoice}\n\nResult : ${result}\n\n`;
+}
+</script>
+</html>
